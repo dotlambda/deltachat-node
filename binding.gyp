@@ -36,12 +36,12 @@
           {
             "libraries": ["-lpthread"],
             "cflags": ["-std=gnu99"],
+            "ldflags": ["-Wl,-Bsymbolic"], # Prevent sqlite3 from electron from overriding sqlcipher
             "conditions": [
               [
                 "USE_SYSTEM_LIBDELTACHAT != 'true'",
                 {
                   "include_dirs": ["deltachat-core-rust/deltachat-ffi"],
-                  "ldflags": ["-Wl,-Bsymbolic"], # Prevent sqlite3 from electron from overriding sqlcipher
                   "libraries": [
                     "../deltachat-core-rust/target/release/libdeltachat.a",
                     "-ldl",
