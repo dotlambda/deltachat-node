@@ -36,7 +36,11 @@
           {
             "libraries": ["-lpthread"],
             "cflags": ["-std=gnu99"],
-            "ldflags": ["-Wl,-Bsymbolic"], # Prevent sqlite3 from electron from overriding sqlcipher
+            "ldflags": [
+              # Prevent sqlite3 from electron from overriding sqlcipher
+              "-Wl,-Bsymbolic",
+              "-Wl,--exclude-libs,ALL",
+            ],
             "conditions": [
               [
                 "USE_SYSTEM_LIBDELTACHAT != 'true'",
